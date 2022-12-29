@@ -6,6 +6,7 @@ const sign_text = document.getElementById("sign_text")
 
 const model =  tf.loadLayersModel('./model/model.json');
 
+console.log("model", model)
 
 
 var actions = ['sourd','rdv','covid','depression']
@@ -18,6 +19,8 @@ var text_predictions = []
 
 
 function onResults(results) {
+    console.log("yup")
+
     keypoints = extract_keypoints(results)
     sequence.push(keypoints)
 
@@ -122,7 +125,6 @@ function extract_keypoints(results){
 
 const holistic = new Holistic({
     locateFile: (file) => {
-        console.log(file)
         return `./assets/js/holistic/${file}`;
         
     }
